@@ -29,10 +29,18 @@ codex mcp add bayeslab-ion --url https://mcp.bayeslab.xyz/api/mcp
 codex mcp login bayeslab-ion
 ```
 
-## Connect Claude
+## Install in Claude
 
-Claude Web, Claude Desktop, and Claude Code use the same production MCP
-endpoint. See [the Claude connector guide](docs/claude-connector.md).
+Add the public Bayeslab marketplace, then install the plugin in Claude Code:
+
+```bash
+claude plugin marketplace add chengxu999/bayeslab-ion
+claude plugin install bayeslab-ion@bayeslab
+```
+
+Open `/mcp` and complete the GoodZ OAuth sign-in when prompted. The same
+production endpoint also works as a custom connector in Claude Web and Claude
+Desktop. See [the Claude connector guide](docs/claude-connector.md).
 
 ## What the plugin does
 

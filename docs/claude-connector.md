@@ -10,6 +10,20 @@ Authentication uses OAuth 2.1 with PKCE. Sign in with the GoodZ account that
 owns your Bayeslab ION access. No API key or OAuth client secret is required
 for the standard connector flow.
 
+## Claude plugin
+
+Install the public plugin to get the remote MCP connector together with the ION
+research workflow:
+
+```bash
+claude plugin marketplace add chengxu999/bayeslab-ion
+claude plugin install bayeslab-ion@bayeslab
+```
+
+Open `/mcp`, select `bayeslab-ion`, and complete the browser sign-in. The plugin
+uses the same production endpoint and account permissions as the custom
+connector below.
+
 ## Claude Web and Claude Desktop
 
 1. Open `Customize > Connectors`.

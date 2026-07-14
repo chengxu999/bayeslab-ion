@@ -42,6 +42,26 @@ test("publishes one installable Bayeslab marketplace entry", async () => {
   ]);
 });
 
+test("publishes one installable Claude marketplace entry", async () => {
+  const marketplace = await readJson(".claude-plugin/marketplace.json");
+
+  assert.equal(marketplace.name, "bayeslab");
+  assert.equal(
+    marketplace.description,
+    "Bayeslab investment-research plugins for Claude."
+  );
+  assert.deepEqual(marketplace.owner, {
+    name: "Bayeslab",
+    email: "support@bayeslab.xyz",
+  });
+  assert.equal(marketplace.plugins.length, 1);
+  assert.equal(marketplace.plugins[0].name, "bayeslab-ion");
+  assert.equal(marketplace.plugins[0].source, "./plugins/bayeslab-ion");
+  assert.equal(marketplace.plugins[0].version, "0.1.0");
+  assert.equal(marketplace.plugins[0].license, "MIT");
+  assert.equal(marketplace.plugins[0].category, "Finance");
+});
+
 test("plugin manifest points only to packaged content", async () => {
   const relativeRoot = "plugins/bayeslab-ion";
   const manifest = await readJson(`${relativeRoot}/.codex-plugin/plugin.json`);
@@ -72,6 +92,19 @@ test("plugin manifest points only to packaged content", async () => {
   );
 });
 
+test("Claude plugin reuses the packaged skill and MCP configuration", async () => {
+  const relativeRoot = "plugins/bayeslab-ion";
+  const manifest = await readJson(`${relativeRoot}/.claude-plugin/plugin.json`);
+
+  assert.equal(manifest.name, "bayeslab-ion");
+  assert.equal(manifest.version, "0.1.0");
+  assert.equal(manifest.license, "MIT");
+  assert.equal(manifest.homepage, "https://bayeslab.xyz/agents/claude");
+  assert.equal(manifest.repository, "https://github.com/chengxu999/bayeslab-ion");
+  await assertFile(`${relativeRoot}/.mcp.json`);
+  await assertFile(`${relativeRoot}/skills/bayeslab-ion-research/SKILL.md`);
+});
+
 test("plugin connects to the canonical production MCP resource", async () => {
   const config = await readJson("plugins/bayeslab-ion/.mcp.json");
 
@@ -80,7 +113,6 @@ test("plugin connects to the canonical production MCP resource", async () => {
       "bayeslab-ion": {
         type: "http",
         url: endpoint,
-        oauth_resource: endpoint,
       },
     },
   });
@@ -108,8 +140,11 @@ test("public docs cover Codex marketplace and Claude connector setup", async () 
 
   assert.match(readme, /codex plugin marketplace add chengxu999\/bayeslab-ion --ref main/);
   assert.match(readme, /codex plugin add bayeslab-ion@bayeslab/);
+  assert.match(readme, /claude plugin marketplace add chengxu999\/bayeslab-ion/);
+  assert.match(readme, /claude plugin install bayeslab-ion@bayeslab/);
   assert.match(readme, new RegExp(endpoint.replaceAll("/", "\\/")));
   assert.match(claude, /Customize > Connectors/);
+  assert.match(claude, /claude plugin marketplace add chengxu999\/bayeslab-ion/);
   assert.match(claude, /claude mcp add --transport http bayeslab-ion/);
   assert.match(claude, new RegExp(endpoint.replaceAll("/", "\\/")));
 });
@@ -118,7 +153,9 @@ test("distribution files contain no committed credentials or legacy endpoint", a
   const files = [
     "README.md",
     "docs/claude-connector.md",
+    ".claude-plugin/marketplace.json",
     "plugins/bayeslab-ion/README.md",
+    "plugins/bayeslab-ion/.claude-plugin/plugin.json",
     "plugins/bayeslab-ion/.mcp.json",
     "plugins/bayeslab-ion/skills/bayeslab-ion-research/SKILL.md",
   ];

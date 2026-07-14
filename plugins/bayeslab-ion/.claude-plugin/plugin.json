@@ -1,0 +1,21 @@
+{
+  "name": "bayeslab-ion",
+  "version": "0.1.0",
+  "description": "Industry-specific equity research through the Bayeslab ION remote MCP server.",
+  "author": {
+    "name": "Bayeslab",
+    "email": "support@bayeslab.xyz"
+  },
+  "homepage": "https://bayeslab.xyz/agents/claude",
+  "repository": "https://github.com/chengxu999/bayeslab-ion",
+  "license": "MIT",
+  "keywords": [
+    "bayeslab",
+    "ion",
+    "equity-research",
+    "investment-research",
+    "valuation",
+    "mcp",
+    "finance"
+  ]
+}

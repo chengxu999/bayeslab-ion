@@ -1,0 +1,30 @@
+{
+  "name": "bayeslab",
+  "description": "Bayeslab investment-research plugins for Claude.",
+  "owner": {
+    "name": "Bayeslab",
+    "email": "support@bayeslab.xyz"
+  },
+  "plugins": [
+    {
+      "name": "bayeslab-ion",
+      "source": "./plugins/bayeslab-ion",
+      "description": "Industry-specific equity research through the Bayeslab ION remote MCP server.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Bayeslab",
+        "email": "support@bayeslab.xyz"
+      },
+      "homepage": "https://bayeslab.xyz/agents/claude",
+      "repository": "https://github.com/chengxu999/bayeslab-ion",
+      "license": "MIT",
+      "category": "Finance",
+      "tags": [
+        "equity-research",
+        "investment-research",
+        "valuation",
+        "mcp"
+      ]
+    }
+  ]
+}
