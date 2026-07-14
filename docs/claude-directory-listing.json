@@ -1,0 +1,75 @@
+{
+  "name": "Bayeslab ION",
+  "tagline": "Industry-specific equity research for investors",
+  "description": "Bayeslab ION is an industry-specific public-equity research system built around Good Business, Good Culture, and Good Price. The connector lets Claude find published company reports, inspect chained analysis and valuation evidence, compare quarterly screening history, and explain category methodology. Paid users can also queue a new company analysis for a selected industry. New jobs consume usage credits, remain isolated from the reviewed report library, and never refresh or overwrite canonical published ION reports.",
+  "slug": "bayeslab-ion",
+  "categories": [
+    "Finance",
+    "Data & Analytics"
+  ],
+  "documentationUrl": "https://bayeslab.xyz/agents/claude",
+  "privacyPolicyUrl": "https://bayeslab.xyz/privacy",
+  "supportContact": "support@bayeslab.xyz",
+  "iconPath": "plugins/bayeslab-ion/assets/bayeslab-ion.png",
+  "server": {
+    "url": "https://mcp.bayeslab.xyz/api/mcp",
+    "transport": "streamable-http",
+    "authentication": "oauth-2.1-pkce-dcr",
+    "apiOwnership": "first-party",
+    "sameUrlForAllUsers": true
+  },
+  "requirements": [
+    "A GoodZ account for OAuth sign-in",
+    "Active Bayeslab ION access for report tools",
+    "Available usage credits before creating a new analysis job"
+  ],
+  "useCases": [
+    {
+      "title": "Read published company research",
+      "prompt": "Find the latest published ION report for PTBA.JK. Separate reported evidence, valuation conclusions, and unresolved risks.",
+      "access": "read"
+    },
+    {
+      "title": "Compare quarterly screening history",
+      "prompt": "Compare how this company's ION status and valuation changed across available screening periods.",
+      "access": "read"
+    },
+    {
+      "title": "Inspect industry methodology",
+      "prompt": "Explain the ION thermal-coal methodology and the evidence required at each analysis step.",
+      "access": "read"
+    },
+    {
+      "title": "Queue an isolated company analysis",
+      "prompt": "Resolve the correct industry for this company, show me the exact analysis request, and wait for approval before using credits to create the job.",
+      "access": "write"
+    }
+  ],
+  "tools": {
+    "readOnly": [
+      "get_analysis_job",
+      "get_category_methodology",
+      "get_company_addons",
+      "get_company_analysis",
+      "get_company_l3",
+      "get_company_overview",
+      "get_company_period_history",
+      "get_project_info",
+      "list_analysis_jobs",
+      "list_categories",
+      "list_companies",
+      "list_periods"
+    ],
+    "write": [
+      "create_analysis_job"
+    ]
+  },
+  "allowedLinkUris": [],
+  "dataHandling": {
+    "collectsConversationData": false,
+    "handlesPersonalHealthData": false,
+    "includesSponsoredContent": false,
+    "transfersFinancialAssets": false,
+    "generatesAiImageVideoOrAudio": false
+  }
+}

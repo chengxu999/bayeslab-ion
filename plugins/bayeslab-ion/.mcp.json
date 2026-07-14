@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bayeslab-ion": {
+      "type": "http",
+      "url": "https://mcp.bayeslab.xyz/api/mcp",
+      "oauth_resource": "https://mcp.bayeslab.xyz/api/mcp"
+    }
+  }
+}

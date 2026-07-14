@@ -1,0 +1,48 @@
+{
+  "name": "bayeslab-ion",
+  "version": "0.1.0",
+  "description": "Industry-specific equity research through the Bayeslab ION remote MCP server.",
+  "author": {
+    "name": "Bayeslab",
+    "email": "support@bayeslab.xyz",
+    "url": "https://bayeslab.xyz/"
+  },
+  "homepage": "https://bayeslab.xyz/agents/codex",
+  "repository": "https://github.com/chengxu999/bayeslab-ion",
+  "license": "MIT",
+  "keywords": [
+    "bayeslab",
+    "ion",
+    "equity-research",
+    "investment-research",
+    "valuation",
+    "mcp",
+    "finance"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Bayeslab ION",
+    "shortDescription": "Published ION research and isolated company analysis",
+    "longDescription": "Use Bayeslab ION inside Codex to find published industry-specific equity research, inspect evidence and valuation, compare quarterly history, and queue isolated paid company analyses without changing the reviewed report library.",
+    "developerName": "Bayeslab",
+    "category": "Finance",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://bayeslab.xyz/",
+    "privacyPolicyURL": "https://bayeslab.xyz/privacy",
+    "termsOfServiceURL": "https://bayeslab.xyz/terms",
+    "defaultPrompt": [
+      "Find the latest published ION research for a company and separate evidence, valuation, and unresolved risks.",
+      "Compare a company's ION verdict and valuation across available screening periods.",
+      "Show the relevant ION industry methodology before proposing a new analysis job."
+    ],
+    "brandColor": "#101828",
+    "composerIcon": "./assets/bayeslab-ion-small.png",
+    "logo": "./assets/bayeslab-ion.png",
+    "screenshots": []
+  }
+}
