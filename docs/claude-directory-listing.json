@@ -1,7 +1,7 @@
 {
   "name": "Bayeslab ION",
   "tagline": "Industry-specific equity research for investors",
-  "description": "Bayeslab ION is an industry-specific public-equity research system built around Good Business, Good Culture, and Good Price. The connector lets Claude find published company reports, inspect chained analysis and valuation evidence, compare quarterly screening history, and explain category methodology. Paid users can also queue a new company analysis for a selected industry. New jobs consume usage credits, remain isolated from the reviewed report library, and never refresh or overwrite canonical published ION reports.",
+  "description": "Bayeslab ION is an industry-specific public-equity research system built around Good Business, Good Culture, and Good Price. The connector lets Claude find published company reports, inspect chained analysis and valuation evidence, compare quarterly screening history, and explain category methodology. Paid users can also queue a new company analysis for a selected industry. New jobs consume actual provider usage credits, remain isolated from the reviewed report library, and never refresh or overwrite canonical published ION reports.",
   "slug": "bayeslab-ion",
   "categories": [
     "Finance",
@@ -48,6 +48,7 @@
   "tools": {
     "readOnly": [
       "get_analysis_job",
+      "get_analysis_job_report",
       "get_category_methodology",
       "get_company_addons",
       "get_company_analysis",

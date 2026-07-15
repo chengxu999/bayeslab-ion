@@ -49,9 +49,10 @@ Desktop. See [the Claude connector guide](docs/claude-connector.md).
   history.
 - Explains industry methodology without exposing private prompt text.
 - Queues a new industry-scoped analysis only after explicit user approval,
-  because the operation consumes usage credits.
-- Polls long-running work compactly and requests the full Markdown report only
-  when needed.
+  because the operation consumes usage credits. The initial reservation is not
+  a spending cap; the final charge follows actual provider usage.
+- Polls long-running work compactly and reads completed Markdown reports in
+  bounded pages.
 
 ## Example prompts
 
