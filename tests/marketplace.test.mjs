@@ -206,3 +206,15 @@ test("Claude directory listing is complete and within portal limits", async () =
   assert.deepEqual(listing.tools.write, ["create_analysis_job"]);
   await assertFile(listing.iconPath);
 });
+
+test("Claude reviewer checklist matches the production report paging contract", async () => {
+  const listing = await readJson("docs/claude-directory-listing.json");
+  const checklist = await readText("docs/claude-directory-submission.md");
+  const toolCount = listing.tools.readOnly.length + listing.tools.write.length;
+
+  assert.match(checklist, new RegExp(`exposes ${toolCount} tools`));
+  assert.match(checklist, /get_analysis_job_report/);
+  assert.match(checklist, /nextOffset/);
+  assert.match(checklist, /hasMore/);
+  assert.doesNotMatch(checklist, /one final `includeReport: true` call/);
+});
