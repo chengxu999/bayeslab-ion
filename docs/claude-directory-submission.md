@@ -32,7 +32,7 @@ avoid copy drift.
 
 ## Tool review
 
-The public connector exposes 13 tools.
+The public connector exposes 14 tools.
 
 Read-only:
 
@@ -48,6 +48,8 @@ Read-only:
 - `get_category_methodology`
 - `list_analysis_jobs`
 - `get_analysis_job`
+- `get_analysis_job_report` reads completed Markdown in bounded pages. Follow
+  each `nextOffset` until `hasMore` is false.
 
 Write:
 
@@ -80,7 +82,8 @@ Remove or rotate the reviewer credentials after review.
 - [ ] A Claude custom connector completes OAuth with the reviewer account.
 - [ ] Every read-only tool succeeds with valid input.
 - [ ] `create_analysis_job` reserves credits once and returns a job ID.
-- [ ] Polling remains compact until one final `includeReport: true` call.
+- [ ] Polling remains compact, then `get_analysis_job_report` advances through
+  each `nextOffset` until `hasMore` is false without creating another job.
 - [ ] The external report remains isolated from canonical published reports.
 - [ ] Invalid inputs and entitlement failures return actionable errors.
 - [ ] Documentation, privacy, terms, and support URLs return `200`.
