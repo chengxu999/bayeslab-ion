@@ -131,7 +131,10 @@ test("skill distinguishes report reads from credit-consuming analysis", async ()
     skill,
     /never\s+refreshes or overwrites canonical published ION reports/i
   );
-  assert.match(skill, /includeReport/i);
+  assert.match(skill, /actual provider usage/i);
+  assert.match(skill, /may\s+exceed the initial reservation/i);
+  assert.match(skill, /get_analysis_job_report/);
+  assert.match(skill, /nextOffset/);
 });
 
 test("public docs cover Codex marketplace and Claude connector setup", async () => {
@@ -170,6 +173,7 @@ test("Claude directory listing is complete and within portal limits", async () =
   const expectedTools = [
     "create_analysis_job",
     "get_analysis_job",
+    "get_analysis_job_report",
     "get_category_methodology",
     "get_company_addons",
     "get_company_analysis",
